@@ -38,5 +38,7 @@ public class AuthResp {
     public void setSuccess(Boolean success) {
         this.success = success;
     }
+
+
 }
 
