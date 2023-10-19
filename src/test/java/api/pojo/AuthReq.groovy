@@ -4,6 +4,7 @@ class AuthReq {
 
     private String email;
     private String password;
+    final String access
 
     AuthReq(String email, String password) {
         this.email = email
