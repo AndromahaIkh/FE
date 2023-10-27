@@ -2,7 +2,12 @@ package api;
 
 import api.pojo.*;
 import io.restassured.RestAssured;
+import io.restassured.specification.Argument;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.hamcrest.Matchers.is;
 
 
 public class RestTest {
@@ -61,10 +66,12 @@ public class RestTest {
                     .when()
                     .header("Authorization", "Bearer " + authResp.getAccess() )
                     .get("/user/profile/get")
-                    .then().log().all();
-
-
+                    .then().
+                    assertThat().body( "user.verified", is (1));
         }
 
 
-    }
+}
+
+
+
