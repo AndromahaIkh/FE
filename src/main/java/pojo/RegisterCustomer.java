@@ -1,18 +1,21 @@
-package api.pojo;
+package pojo;
+
+import static fe.ConfigProvider.CUSTOMEREMAIL;
+import static fe.ConfigProvider.CUSTOMERPASSWORD;
 
 public class RegisterCustomer {
+    //регистрация Заказчика
     private String name;
     private String email;
     private String password;
     private Integer user_type;
-    private String phone;
+    //  private String phone;
 
-    public RegisterCustomer(String name, String email, String password, Integer user_type, String phone) {
+    public RegisterCustomer(String name, String email, String password, Integer user_type) {
         this.name = name;
-        this.email = email;
-        this.password = password;
+        this.email = CUSTOMEREMAIL;
+        this.password = CUSTOMERPASSWORD;
         this.user_type = user_type;
-        this.phone = phone;
     }
 
     public String getName() {
@@ -31,7 +34,5 @@ public class RegisterCustomer {
         return user_type;
     }
 
-    public String getPhone() {
-        return phone;
-    }
+
 }

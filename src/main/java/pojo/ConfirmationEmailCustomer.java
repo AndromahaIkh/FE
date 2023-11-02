@@ -1,4 +1,6 @@
-package api.pojo;
+package pojo;
+
+import static fe.ConfigProvider.CUSTOMEREMAIL;
 
 public class ConfirmationEmailCustomer {
 
@@ -9,7 +11,7 @@ public class ConfirmationEmailCustomer {
     }
 
     public ConfirmationEmailCustomer(String email, String user_id) {
-        this.email = email;
+        this.email = CUSTOMEREMAIL;
         this.user_id = user_id;
     }
 
