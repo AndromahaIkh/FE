@@ -5,6 +5,7 @@ import com.typesafe.config.ConfigFactory;
 
 public interface ConfigProvider {
 
+    // todo: в Java все константные переменные обозначаются final static + лучше писать везде модификаторы доступа
     String URL = readConfig().getString("url");
     String CUSTOMEREMAIL = readConfig().getString("customerEmail");
     String CUSTOMERPASSWORD = readConfig().getString("customerPassword");

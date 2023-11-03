@@ -15,6 +15,7 @@ public class GetToken {
 
     @Test
     void restTest2() {
+//        todo: переназвать метод осмысленно
         Specification.installSpec(Specification.requestSpec(), Specification.responseSpec());
 
         AuthReq authReq = new AuthReq(CUSTOMEREMAIL, CUSTOMERPASSWORD);
@@ -25,6 +26,8 @@ public class GetToken {
         AuthResp authResp = given()
                 .when()
                 .body(authReq)
+                // todo: насколько помню, URL можно вынести в Specification
+                //  и каждый раз тут такое не писать (и в остальных похожих местах
                 .post(ConfigProvider.URL + "/authentication/signin")
                 .then()
                 //.extract().response().jsonPath().getString("access"); //извлечекаем значение и передаем его в переменную token
@@ -37,6 +40,8 @@ public class GetToken {
                 .get(ConfigProvider.URL + "/user/profile/get")
                 .then().
                 assertThat().body("user.verified", is(1));
+
+        //        todo: увеличить покрытие
     }
 
 }

@@ -13,8 +13,11 @@ public class Registration {
 
     @Test
     public void readFromConfig() {
+        // todo: что конкретно делает тест? из названия не понятно
+        // лучше делать в формате should что-то if что-то
+        // типо shouldReturnClientIfHeIsExist
 
-        Specification.installSpec(Specification.requestSpec(), Specification.responseSpec());
+        Specification.installSpec(Specification.requestSpec(), Specification.responseSpec()); // todo: можно ли этот шаг вынести в before?
 
         RegisterCustomer registerCustomer = new RegisterCustomer("TEST AQA", CUSTOMEREMAIL, CUSTOMERPASSWORD, 1);
         RegisterCustomerResponce registerCustomerResponce = RestAssured
