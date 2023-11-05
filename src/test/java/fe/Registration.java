@@ -17,6 +17,7 @@ public class Registration {
         Specification.installSpec(Specification.requestSpec(), Specification.responseSpec());
 
         RegisterCustomer registerCustomer = new RegisterCustomer("TEST AQA", CUSTOMEREMAIL, CUSTOMERPASSWORD, 1);
+
         RegisterCustomerResponce registerCustomerResponce = RestAssured
                 .given()
                 .when()

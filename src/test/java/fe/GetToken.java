@@ -1,45 +1,35 @@
 package fe;
 
+import io.restassured.RestAssured;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import org.junit.jupiter.api.Test;
-import pojo.AuthReq;
-import pojo.AuthResp;
-
-import static fe.ConfigProvider.CUSTOMEREMAIL;
-import static fe.ConfigProvider.CUSTOMERPASSWORD;
-import static io.restassured.RestAssured.given;
+import pojo.GetProfile;
 import static org.hamcrest.Matchers.is;
 
 
 public class GetToken {
 
-
     @Test
-    void restTest2() {
+    public void testGetProfile() {
         Specification.installSpec(Specification.requestSpec(), Specification.responseSpec());
 
-        AuthReq authReq = new AuthReq(CUSTOMEREMAIL, CUSTOMERPASSWORD);
-        //Создаем экземпляр класса AuthReq
+        // Получаем авторизационный токен из класса AuthTokenService
+        String authToken = GetAccessToken.getAuthToken();
 
-
-        // создаем новую переменную через которую передаем токен в последующие тесты
-        AuthResp authResp = given()
+        // Отправляем GET-запрос для получения профиля пользователя с использованием токена
+   //     GetProfile getProfile = (GetProfile)
+                        RestAssured.given()
+                .header("Authorization", "Bearer " + authToken)
                 .when()
-                .body(authReq)
-                .post(ConfigProvider.URL + "/authentication/signin")
-                .then()
-                //.extract().response().jsonPath().getString("access"); //извлечекаем значение и передаем его в переменную token
-                .extract().response().as(AuthResp.class);
-
-
-        given()
-                .when()
-                .header("Authorization", "Bearer " + authResp.getAccess())
                 .get(ConfigProvider.URL + "/user/profile/get")
-                .then().
-                assertThat().body("user.verified", is(1));
+                .then()
+                .assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("UserTemplate.json"));
     }
 
+
 }
+
+
 
 
 

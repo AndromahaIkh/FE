@@ -1,0 +1,22 @@
+{
+  "user": {
+    "id": "278a027b-24c0-41ca-b989-444c75911cd2",
+    "verified": 1,
+    "phone_verified": 1,
+    "user_type": 1,
+    "profile_filled": 0,
+    "profile_data": {
+      "profile_id": "53c4557f-de6b-4d46-b219-5b2514631dc1",
+      "name": "TEST AQA",
+      "profile_slug": "test-aqa-1dc1",
+      "location": null,
+      "langs": null,
+      "email": null,
+      "phone": null,
+      "display_publicly": 1,
+      "avatar": null,
+      "last_login": "2023-11-05T16:31:26.741888Z",
+      "status": 1
+    }
+  }
+}
