@@ -9,9 +9,6 @@ public interface ConfigProvider {
     String CUSTOMEREMAIL = readConfig().getString("customerEmail");
     String CUSTOMERPASSWORD = readConfig().getString("customerPassword");
 
-
-
-
     //метод, который будет обращаться к файлу conf и читать его содержимое
     static Config readConfig() {
         return ConfigFactory.load("application.conf");
