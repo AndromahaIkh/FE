@@ -1,11 +1,13 @@
 package pojo;
 
-import lombok.Getter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 import static fe.ConfigProvider.CUSTOMEREMAIL;
 import static fe.ConfigProvider.CUSTOMERPASSWORD;
 
-@Getter
+@Data
+@Accessors(chain = true)
 public class RegisterCustomer {
     //регистрация Заказчика
     private String name;
@@ -13,13 +15,11 @@ public class RegisterCustomer {
     private String password;
     private Integer user_type;
 
-    public RegisterCustomer(String name, String email, String password, Integer user_type) {
-        this.name = name;
-        this.email = CUSTOMEREMAIL;
-        this.password = CUSTOMERPASSWORD;
-        this.user_type = user_type;
+    public static RegisterCustomer build(String name, Integer user_type) {
+        return new RegisterCustomer().setEmail(CUSTOMEREMAIL)
+                .setPassword(CUSTOMERPASSWORD)
+                .setName(name)
+                .setUser_type(user_type);
     }
 
-    public RegisterCustomer() {
-    }
 }

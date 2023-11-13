@@ -3,8 +3,6 @@ package fe;
 import io.restassured.RestAssured;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.junit.jupiter.api.Test;
-import pojo.GetProfile;
-import static org.hamcrest.Matchers.is;
 
 
 public class GetToken {

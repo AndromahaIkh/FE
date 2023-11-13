@@ -1,20 +1,19 @@
 package pojo;
 
-import lombok.Getter;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 import static fe.ConfigProvider.CUSTOMEREMAIL;
 
-@Getter
+@Data
+@Accessors(chain = true)
 public class ConfirmationEmailCustomer {
 
     private String email;
     private String user_id;
 
-    public ConfirmationEmailCustomer() {
-    }
-
-    public ConfirmationEmailCustomer(String email, String user_id) {
-        this.email = CUSTOMEREMAIL;
-        this.user_id = user_id;
+    public static ConfirmationEmailCustomer build(String user_id) {
+        return new ConfirmationEmailCustomer().setEmail(CUSTOMEREMAIL)
+                .setUser_id(user_id);
     }
 }

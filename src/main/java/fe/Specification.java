@@ -1,12 +1,14 @@
 package fe;
 
-import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+
+import static io.restassured.RestAssured.requestSpecification;
+import static io.restassured.RestAssured.responseSpecification;
 
 
 public class Specification {
@@ -28,8 +30,8 @@ public class Specification {
 
     //статик исполюзую, чтобы не создавать экземпляр класса
     public static void installSpec(RequestSpecification request, ResponseSpecification response){
-        RestAssured.requestSpecification = request;
-        RestAssured.responseSpecification = response;
+        requestSpecification = request;
+        responseSpecification = response;
     }
 
 }

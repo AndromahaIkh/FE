@@ -4,9 +4,7 @@ import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 import pojo.ConfirmationEmailCustomer;
 import pojo.RegisterCustomer;
-import pojo.RegisterCustomerResponce;
-import static fe.ConfigProvider.CUSTOMEREMAIL;
-import static fe.ConfigProvider.CUSTOMERPASSWORD;
+import pojo.RegisterCustomerResponse;
 
 
 public class Registration {
@@ -16,18 +14,19 @@ public class Registration {
 
         Specification.installSpec(Specification.requestSpec(), Specification.responseSpec());
 
-        RegisterCustomer registerCustomer = new RegisterCustomer("TEST AQA", CUSTOMEREMAIL, CUSTOMERPASSWORD, 1);
+        RegisterCustomer registerCustomer = RegisterCustomer.build("TEST AQA", 1);
 
-        RegisterCustomerResponce registerCustomerResponce = RestAssured
+        RegisterCustomerResponse registerCustomerResponse = RestAssured
                 .given()
                 .when()
                 .body(registerCustomer)
                 .post(ConfigProvider.URL + "/user/register")
                 .then()
-                // .extract().response().jsonPath().getString("user_id");
-                .extract().response().as(RegisterCustomerResponce.class);
+                .statusCode(200)
+                .extract().as(RegisterCustomerResponse.class);
+        System.out.println(registerCustomerResponse.getUser_id());
 
-        ConfirmationEmailCustomer confirmationEmailCustomer = new ConfirmationEmailCustomer(registerCustomer.getEmail(), registerCustomerResponce.user_id);
+        ConfirmationEmailCustomer confirmationEmailCustomer = ConfirmationEmailCustomer.build(registerCustomerResponse.user_id);
 
         RestAssured
                 .given()
@@ -35,6 +34,10 @@ public class Registration {
                 .body(confirmationEmailCustomer)
                 .post(ConfigProvider.URL + "/confirmation/code/email")
                 .then();
+
+
+
+
     }
 
 

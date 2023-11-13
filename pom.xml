@@ -11,7 +11,10 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <rest-assured>5.3.2</rest-assured>
     </properties>
+
+
 
     <dependencies>
 
@@ -25,7 +28,7 @@
     <dependency>
         <groupId>io.rest-assured</groupId>
         <artifactId>rest-assured</artifactId>
-        <version>5.3.2</version>
+        <version>${rest-assured}</version>
         <scope>test</scope>
 
     </dependency>
@@ -42,7 +45,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
-            <version>5.3.2</version>
+            <version>${rest-assured}</version>
         </dependency>
 
 
@@ -61,13 +64,13 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>5.3.2</version>
+            <version>${rest-assured}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.1.0</version>
+            <version>7.7.0</version>
             <scope>test</scope>
         </dependency>
 

@@ -1,7 +1,6 @@
 package pojo;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import static fe.ConfigProvider.CUSTOMEREMAIL;
 import static fe.ConfigProvider.CUSTOMERPASSWORD;
@@ -18,7 +17,5 @@ public class AuthReq {
         this.password = CUSTOMERPASSWORD;
     }
 
-    public AuthReq() {
-    }
 }
 
