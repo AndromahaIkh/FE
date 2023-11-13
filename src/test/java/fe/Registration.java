@@ -24,6 +24,7 @@ public class Registration {
                 .then()
                 .statusCode(200)
                 .extract().as(RegisterCustomerResponse.class);
+        System.out.println(registerCustomerResponse.getUser_id());
 
         ConfirmationEmailCustomer confirmationEmailCustomer = ConfirmationEmailCustomer.build(registerCustomerResponse.user_id);
 
@@ -33,6 +34,10 @@ public class Registration {
                 .body(confirmationEmailCustomer)
                 .post(ConfigProvider.URL + "/confirmation/code/email")
                 .then();
+
+
+
+
     }
 
 
